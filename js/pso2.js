@@ -2,17 +2,17 @@ $(function() {
   var jsonDataUrl = "./data/arkuma.json";
   var arkumaWord;
   setWord = function($target){
-    $($target).text(json.arkuma-word[r].text);
-    var l = json.arkumaWord.length;
+    var l = arkumaWord.length;
     var r = Math.floor(Math.random()*l)
+    $($target).text(arkumaWord[r].text);
   };
 
   var successFunc = function(json) {
     console.info(json);
-    console.info(json.arkuma-word);
-    console.info(json.arkuma-word.length);
-    console.info(json.arkuma-word[0]);
-    arkumaWord = json.arkuma-word;
+    console.info(json.word);
+    console.info(json.word.length);
+    console.info(json.word[0]);
+    arkumaWord = json.word;
   };
   $.getJSON(jsonDataUrl,function(json) {
     successFunc(json);
