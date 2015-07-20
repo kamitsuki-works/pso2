@@ -1,22 +1,43 @@
-﻿body{color:#339;line-height:1.5;margin:0;padding:0;vertical-align:middle;font-size:14px;font-family: "Lucida Grande","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS P Gothic",sans-serif,Verdana,Arial,Helvetica;overflow-y:scroll;}
+﻿body{color:#37c;line-height:1.5;margin:0;padding:0;vertical-align:middle;font-size:14px;font-family: "Lucida Grande","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS P Gothic",sans-serif,Verdana,Arial,Helvetica;overflow-y:scroll;}
 div.body{margin:0 auto;background:#fff;position:relative;min-height:100%;}
 body > div.body{height:auto;}
 
 div.main{width:900px;margin:0 auto;text-align:center;position:relative;}
-div.header{width:100%;min-width:900px;height:120px;margin-bottom:40px;background-color:#fff;background-image:url("img/head.png");position:relative;background-repeat-y: no-repeat;}
+div.header{width:100%;min-width:900px;height:120px;margin-bottom:5px;background-color:#fff;background-image:url("img/head.png");position:relative;background-repeat-y: no-repeat;}
 img.title{height:90px;width:450px;margin:10px 20px 0;}
 img.logo{height:120px;width:200px;margin:0;}
 div.arkuma{display: inline-block;position:relative;}
 img.arkuma{height:100px;width:150px;margin-top:10px;}
-div.Gchat{display:none;width:199px;height:20px;line-height:20px;padding:75px 22px 16px;background-image:url("img/Gchat.png");background-repeat: no-repeat;text-align: left;position:absolute;right:14px;bottom:-81px;}
+div.Gchat{display:none;width:199px;height:20px;line-height:20px;padding:75px 22px 16px;background-image:url("img/Gchat.png");background-repeat: no-repeat;text-align: left;position:absolute;right:14px;bottom:-81px;z-index:2;}
 
-div.tweet{position:absolute;top:115px;left:640px;}
+div.tab{display:inline-block;font-size:16px;color:#fff;line-height:30px;text-shadow:0 1px 1px #aac;overflow:hidden;width:225px;height:30px;background-image:url("img/old.png");background-size:225px 30px;vertical-align:top;cursor:pointer}
+div.tab:hover{opacity: 0.8;transition: 0.2s;}
 
-div#jqContextMenu{width:141px;height:139px;padding:32px 11px 18px;background-image:url("img/menu.png");text-align: left;}
-div#jqContextMenu>ul>li{width:135px;}
+div.right{float:right;margin:10px 20px 10px 0;}
+a.vote{height:120px;width:160px;margin:0 0 10px;target:new;display:inline-block;background-image:url("img/vote.png");}
+a.pso2{height:120px;width:160px;margin:10px 0;target:new;display:inline-block;background-image:url("img/pso2.png");}
+a.twitter{height:120px;width:160px;margin:0 0 10px;target:new;display:inline-block;background-image:url("img/twitter.png");}
+div.oe{height:40px;width:158px;margin:0 0 10px;target:new;display:inline-block;border:1px solid #339;}
+
+
+
+footer{width:100%;min-width:900px;clear:both;color:#fff;background:#3166b1;height:40px;text-align:center;padding:20px 0;}
+
+div#jqContextMenu{width:141px;height:139px;padding:32px 8px 18px 14px;background-image:url("img/menu.png");text-align: left;}
+div#jqContextMenu>ul>li{width:135px;position: relative;}
+div#jqContextMenu>ul>li>a:hover:before{position: absolute;
+content: "";
+width: 0;
+height: 0;
+left: -6px;
+top: 7px;
+border: 6px solid transparent;
+border-left-color: #37c;
+border-right: none;}
+
 img{vertical-align: top;}
-a{color:#339;text-decoration:none;}a:hover,a:focus,a:active{color:#339;text-decoration:none;}
-pre,div.pre{color:#339;font-family: "Lucida Grande","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS P Gothic",sans-serif,Verdana,Arial,Helvetica;word-break:break-all;word-wrap:break-word;white-space:pre-wrap;padding:0;margin:10px 20px;max-width:620px;font-size:16px;text-align:left;overflow:auto;}
+a{color:#37c;text-decoration:none;}a:hover,a:focus,a:active{color:#37c;text-decoration:none;}
+pre,div.pre{color:#37c;font-family: "Lucida Grande","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS P Gothic",sans-serif,Verdana,Arial,Helvetica;word-break:break-all;word-wrap:break-word;white-space:pre-wrap;padding:0;margin:10px 20px;max-width:620px;font-size:16px;text-align:left;overflow:auto;}
 div.center{text-align:center;margin:0 auto;}
 .clear{clear:both;}
 .clear-l{clear:left;}
