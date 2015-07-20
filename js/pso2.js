@@ -8,6 +8,10 @@ $(function() {
   };
 
   var successFunc = function(json) {
+    console.info(json);
+    console.info(json.arkuma-word);
+    console.info(json.arkuma-word.length);
+    console.info(json.arkuma-word[0]);
     arkumaWord = json.arkuma-word;
   };
   $.getJSON(jsonDataUrl,function(json) {
