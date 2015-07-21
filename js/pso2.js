@@ -28,7 +28,7 @@ $(function() {
   });
   $("div.arkuma").hover(
     function () {
-      // setWord("div.Gchat");
+      setWord("div.Gchat");
       $("div.Gchat").animate( {opacity: 'toggle' }, 100 );
     },
     function () {
