@@ -12,6 +12,8 @@ div.Gchat{display:none;width:199px;height:20px;line-height:20px;padding:75px 22p
 
 div.tab{display:inline-block;font-size:16px;color:#fff;line-height:30px;text-shadow:0 1px 1px #aac;overflow:hidden;width:225px;height:30px;background-image:url("img/old.png");background-size:225px 30px;vertical-align:top;cursor:pointer}
 div.tab:hover{opacity: 0.8;transition: 0.2s;}
+div.tab.disabled{opacity: 0.3;cursor:default;}
+
 
 div.right{float:right;margin:10px 20px 10px 0;}
 a.vote{height:120px;width:160px;margin:0 0 10px;target:new;display:inline-block;background-image:url("img/vote.png");}
@@ -19,6 +21,10 @@ a.pso2{height:120px;width:160px;margin:10px 0;target:new;display:inline-block;ba
 a.twitter{height:120px;width:160px;margin:0 0 10px;target:new;display:inline-block;background-image:url("img/twitter.png");}
 div.oe{height:40px;width:158px;margin:0 0 10px;target:new;display:inline-block;border:1px solid #339;}
 
+div.diary{width:600px;margin:20px 0 0 80px;text-align: left;}
+div.sub{width:590px;height:40px;font-size: 24px;padding-left: 10px;background-image:url("img/sub.png");}
+img.ss{display: block;margin:10px auto 20px;width:540px;padding:5px;border:1px solid #acf;box-shadow:1px 1px 3px #acf;}
+div.date{text-align: right;border-top: 1px solid #3166b1;}
 
 
 footer{width:100%;min-width:900px;clear:both;color:#fff;background:#3166b1;height:40px;text-align:center;padding:20px 0;}
@@ -37,7 +43,7 @@ border-right: none;}
 
 img{vertical-align: top;}
 a{color:#37c;text-decoration:none;}a:hover,a:focus,a:active{color:#37c;text-decoration:none;}
-pre,div.pre{color:#37c;font-family: "Lucida Grande","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS P Gothic",sans-serif,Verdana,Arial,Helvetica;word-break:break-all;word-wrap:break-word;white-space:pre-wrap;padding:0;margin:10px 20px;max-width:620px;font-size:16px;text-align:left;overflow:auto;}
+pre,div.pre{color:#37c;font-family: "Lucida Grande","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS P Gothic",sans-serif,Verdana,Arial,Helvetica;word-break:break-all;word-wrap:break-word;white-space:pre-wrap;padding:0;margin:10px;max-width:580px;font-size:16px;text-align:left;overflow:auto;}
 div.center{text-align:center;margin:0 auto;}
 .clear{clear:both;}
 .clear-l{clear:left;}

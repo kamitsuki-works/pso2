@@ -1,18 +1,18 @@
 $(function() {
-  // var jsonDataUrl = "./data/arkuma.json";
-  // var arkumaWord;
-  // var successFunc = function(json) {
-  //   arkumaWord = json.word;
-  // };
-  // $.getJSON(jsonDataUrl,function(json) {
-  //   successFunc(json);
-  //   return;
-  // });
-  // var setWord = function($target){
-  //   var l = arkumaWord.length;
-  //   var r = Math.floor(Math.random()*l)
-  //   $($target).text(arkumaWord[r].text);
-  // };
+  var jsonDataUrl = "./data/arkuma.json";
+  var arkumaWord;
+  var successFunc = function(json) {
+    arkumaWord = json.word;
+  };
+  $.getJSON(jsonDataUrl,function(json) {
+    successFunc(json);
+    return;
+  });
+  var setWord = function($target){
+    var l = arkumaWord.length;
+    var r = Math.floor(Math.random()*l)
+    $($target).text(arkumaWord[r].text);
+  };
 
   $("html").contextMenu('rmenu',{
     menuStyle: {
