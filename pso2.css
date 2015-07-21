@@ -31,19 +31,11 @@ footer{width:100%;min-width:900px;clear:both;color:#fff;background:#3166b1;heigh
 
 div#jqContextMenu{width:141px;height:139px;padding:32px 8px 18px 14px;background-image:url("img/menu.png");text-align: left;}
 div#jqContextMenu>ul>li{width:135px;position: relative;}
-div#jqContextMenu>ul>li>a:hover:before{position: absolute;
-content: "";
-width: 0;
-height: 0;
-left: -6px;
-top: 7px;
-border: 6px solid transparent;
-border-left-color: #37c;
-border-right: none;}
+div#jqContextMenu>ul>li>a:hover:before{position: absolute;content: "";width: 0;height: 0;left: -6px;top: 7px;border: 6px solid transparent;border-left-color: #37c;border-right: none;}
 
 img{vertical-align: top;}
 a{color:#37c;text-decoration:none;}a:hover,a:focus,a:active{color:#37c;text-decoration:none;}
-pre,div.pre{color:#37c;font-family: "Lucida Grande","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS P Gothic",sans-serif,Verdana,Arial,Helvetica;word-break:break-all;word-wrap:break-word;white-space:pre-wrap;padding:0;margin:10px;max-width:580px;font-size:16px;text-align:left;overflow:auto;}
+pre,div.pre{color:#37c;font-family: "Lucida Grande","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS P Gothic",sans-serif,Verdana,Arial,Helvetica;word-break:break-all;word-wrap:break-word;white-space:pre-wrap;padding:0;margin:10px 10px 15px;max-width:580px;font-size:16px;text-align:left;overflow:auto;line-height:30px;}
 div.center{text-align:center;margin:0 auto;}
 .clear{clear:both;}
 .clear-l{clear:left;}
