@@ -27,7 +27,7 @@ img.ss{display: block;margin:10px auto 20px;width:540px;padding:5px;border:1px s
 div.date{text-align: right;border-top: 1px solid #3166b1;}
 
 
-footer{width:100%;min-width:900px;clear:both;color:#fff;background:#3166b1;height:40px;text-align:center;padding:20px 0;}
+footer{width:100%;min-width:900px;clear:both;color:#fff;background:#3166b1;height:40px;text-align:center;padding:20px 0;margin-top:20px;}
 
 div#jqContextMenu{width:141px;height:139px;padding:32px 8px 18px 14px;background-image:url("img/menu.png");text-align: left;}
 div#jqContextMenu>ul>li{width:135px;position: relative;}
