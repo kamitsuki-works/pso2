@@ -15,14 +15,14 @@ div.tab:hover{opacity: 0.8;transition: 0.2s;}
 div.tab.disabled{opacity: 0.3;cursor:default;}
 
 
-div.right{float:right;margin:10px 20px 10px 0;}
+div.right{float:right;margin:10px 20px 10px 0;display:block;}
 a.vote{height:120px;width:160px;margin:0 0 10px;target:new;display:inline-block;background-image:url("img/vote.png");}
 a.pso2{height:120px;width:160px;margin:10px 0;target:new;display:inline-block;background-image:url("img/pso2.png");}
 a.twitter{height:120px;width:160px;margin:0 0 10px;target:new;display:inline-block;background-image:url("img/twitter.png");}
 div.oe{height:40px;width:158px;margin:0 0 10px;target:new;display:inline-block;border:1px solid #339;}
 
 div.diary{width:600px;margin:20px 0 0 80px;text-align: left;}
-div.sub{width:590px;height:40px;font-size: 24px;padding-left: 10px;background-image:url("img/sub.png");}
+h1.sub{width:590px;height:40px;font-size: 24px;padding-left: 10px;background-image:url("img/sub.png");}
 img.ss{display: block;margin:10px auto 20px;width:540px;padding:5px;border:1px solid #acf;box-shadow:1px 1px 3px #acf;}
 div.date{text-align: right;border-top: 1px solid #3166b1;}
 
@@ -40,3 +40,22 @@ div.center{text-align:center;margin:0 auto;}
 .clear{clear:both;}
 .clear-l{clear:left;}
 body .hide{display:none;}
+
+
+@media screen and (max-width: 610px){
+body{font-size:10px;}
+div.right{display:none;}
+div.main{width:320px;}
+div.header{width:100%;min-width:320px;height:60px;margin-bottom:5px;background-color:#fff;background-image:url("img/head.png");position:relative;background-repeat-y: no-repeat;background-size:1px 60px;}
+img.title{height:45px;width:225px;margin:5px 0px 0;}
+img.logo{display:none;}
+div.arkuma{display:none;}
+div.tabs{display:none;}
+
+div.diary{width:320px;margin:0;text-align: left;}
+h1.sub{width:305px;height:20px;font-size: 12px;padding-left: 10px;background-image:url("img/sub.png");background-size:315px 20px;}
+img.ss{margin:5px auto 10px;width:280px;padding:3px;border:1px solid #acf;box-shadow:1px 1px 1px #acf;}
+pre,div.pre{font-size:10px;line-height:20px;margin:10px 10px 10px;}
+footer{min-width:320px;}
+
+}
