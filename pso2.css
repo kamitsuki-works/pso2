@@ -63,7 +63,7 @@ img.logo{display:none;}
 div.arkuma{display:none;}
 
 div.right{display:none;}
-div.tab{display:none;}
+a.tab{display:none;}
 
 div.diary{max-width:84%;margin:20px auto 0;text-align: left;background-color:#fff;border-radius:10px;padding:1% 3%; 3%}
 h1.sub{width:100%;min-height:40px;font-size: 24px;padding-left: 10px;background-image:url("img/sub.png");background-repeat: no-repeat;background-position:bottom;}
