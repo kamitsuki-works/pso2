@@ -24,10 +24,9 @@ div.arkuma{display: inline-block;position:relative;}
 img.arkuma{height:100px;width:150px;margin-top:10px;}
 div.Gchat{display:none;width:199px;height:20px;line-height:20px;padding:75px 22px 16px;background-image:url("img/Gchat.png");background-repeat: no-repeat;text-align: left;position:absolute;right:14px;bottom:-81px;z-index:2;}
 
-div.tab{display:inline-block;font-size:16px;color:#fff;line-height:30px;text-shadow:0 1px 1px #aac;overflow:hidden;width:225px;height:30px;background-image:url("img/old.png");background-size:225px 30px;vertical-align:top;cursor:pointer}
-div.tab:hover{opacity: 0.8;transition: 0.2s;}
-div.tab.disabled{opacity: 0.3;cursor:default;}
-
+.tab{display:inline-block;font-size:16px;color:#fff;line-height:30px;text-shadow:0 1px 1px #aac;overflow:hidden;width:225px;height:30px;background-image:url("img/old.png");background-size:225px 30px;vertical-align:top;cursor:pointer}
+.tab:hover{color:#fff;opacity: 0.8;transition: 0.2s;}
+.tab.disabled{opacity: 0.3;cursor:default;}
 
 div.right{float:right;margin:10px 20px 10px 0;display:block;}
 a.vote{height:120px;width:160px;margin:0 0 10px;target:new;display:inline-block;background-image:url("img/vote.png");}
@@ -39,6 +38,17 @@ div.diary{width:600px;margin:20px 0 0 80px;text-align: left;}
 h1.sub{width:590px;height:40px;font-size: 24px;padding-left: 10px;background-image:url("img/sub.png");background-repeat: no-repeat;}
 img.ss{display: block;margin:10px auto 20px;width:540px;padding:5px;border:1px solid #acf;box-shadow:1px 1px 3px #acf;}
 div.date{text-align: right;border-top: 1px solid #3166b1;}
+
+ul.characters{}
+ul.characters li{display:inline-block;cursor:pointer;}
+ul.characters li:hover{opacity:0.75;}
+
+div.profile{position:relative;width:860px;height:600px;margin:40px 20px 0;text-align: left;overflow:hidden;background-image:url("img/profbg.jpg");background-repeat: no-repeat;}
+img.name01{position:absolute;left:0;top:100px;}
+img.name02,img.name03,img.name04{position:absolute;left:-300px;top:100px;opacity:0;}
+img.moonlight{position:absolute;right:-10px;height:570px;top:20px;}
+img.gengetsu,img.artemis{position:absolute;right:-300px;height:570px;top:20px;opacity:0;}
+img.mugetsu{position:absolute;right:-300px;height:600px;top:0;opacity:0;}
 
 footer{width:100%;min-width:900px;clear:both;color:#fff;background:#3166b1;height:40px;text-align:center;padding:20px 0;margin-top:20px;}
 
@@ -59,6 +69,7 @@ div.diary{max-width:84%;margin:20px auto 0;text-align: left;background-color:#ff
 h1.sub{width:100%;min-height:40px;font-size: 24px;padding-left: 10px;background-image:url("img/sub.png");background-repeat: no-repeat;background-position:bottom;}
 img.ss{display: block;margin:10px auto 20px;width:100%;border-radius:5px;}
 div.date{text-align: right;border-top: 1px solid #3166b1;}
+
 
 footer{width:auto;min-width:100%;clear:both;color:#fff;background:#3166b1;height:40px;text-align:center;padding:20px 0;margin-top:20px;}
 
