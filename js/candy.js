@@ -3,19 +3,19 @@ $(function() {
   var jsonPetDataUrl = "../data/pets.json";
   var summonPets;
 
-  // ƒyƒbƒg‚Ìî•ñ‚ðŽæ“¾‚·‚éB
+  // ãƒšãƒƒãƒˆã®æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚
   $.getJSON(jsonPetDataUrl,function(json) {
     summonPets = json.pets;
+    console.log(summonPets[0].name);
+    console.log(summonPets[0].paper);
+    console.log(summonPets[0]);
+
     $("div.hoge").text(summonPets[0].name);
     return;
   });
 
-
-
-
-
-
-//===== ‰‰ñŽÀsŽž =====
+//===== åˆå›žå®Ÿè¡Œæ™‚ =====
 //  setCandyBox();
 
 });
+
