@@ -1,21 +1,73 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <title>PSO2キャンディボックスシミュレータ</title>
+  <title>PSO2キャンディボックスシミュレータ in 上月ちゃん劇場</title>
   <meta charset="utf-8" />
   <meta name="keywords" Content="pso2,上月ちゃん,上月弦夜,Moonlight" />
   <meta name="description" Content="上月ちゃん劇場" />
   <meta name="author" content="Genya Kamitsuki" />
   <meta name="copyright" content="Genya Kamitsuki" />
   <meta name="robots" content="noindex,nofollow" />
-  <link rel="stylesheet" href="../pso2.css" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <meta name="viewport" content="width = device-width, initial-scale = 0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable = no">
+<style>
+body{background-color:#cef;}
+div.left{float:left; width:400px;}
+
+body .dd-select{border:solid 1px #8ae;}
+body .dd-selected{padding:2px;background-color:#f3fcff;color:#369;}
+body .dd-selected .dd-selected-image{height:40px;width:41px;margin:2px 5px -2px 3px;}
+body .dd-option{padding:2px;font-size:12px;}
+body .dd-option .dd-option-image{height:40px;width:41px;margin:2px 5px 2px 3px;}
+
+
+ul#candylist li.active{color:red;}
+
+div.candybox{display:inline-block;height:400px;width:400px;padding:3px;border:10px solid #8ae;border-radius:10px;font-size:0;position:relative;}
+div.candybox div.candy{display:inline-block;position:absolute;z-index:0;border-radius:16px;opacity:0.5;}
+div.candybox div.candy.parfait{background-color:red;}
+div.candybox div.candy.roll{background-color:blue;}
+div.candybox div.candy.cookie{background-color:navy;}
+div.candybox div.candy.pancake{background-color:yellow;}
+div.candybox div.candy.lemonsoda{background-color:black;}
+div.candybox div.candy.crepe{background-color:green;}
+div.candybox div.candy.lollipop{background-color:gray;}
+div.candybox div.candy.sand{background-color:purple;}
+div.candybox div.candy.gummy{background-color:pink;}
+ul#candytile{padding:0;margin:0;position:absolute;z-index:-1;}
+ul#candytile li.tile{display:inline-block;height:50px;width:50px;background-color:#fff;}
+ul#candytile li.tile.colored{background-color:#acf;}
+ul#candytile li.tile.paper, ul#candytile li.tile.colored.paper{background-color:#666;}
+ul#candycell{padding:0;margin:0;position:absolute;z-index:1;}
+ul#candycell li.cell{display:inline-block;height:50px;width:50px;}
+.paper{cursor:no-drop;}
+
+
+</style>
+
 </head>
 <body>
-<div class="hoge"></div>
+
+<div class="left">
+ <div class="pet">
+  <select id="selectpet" name="selectpet">
+  </select>
+ </div>
+ <div class="candy">
+  <ul id="candylist">
+  </ul>
+ </div>
+</div>
+
+<div class="candybox">
+  <ul id="candytile">
+  </ul>
+  <ul id="candycell">
+  </ul>
+</div>
 
 <script src="../js/jquery.js"></script>
+<script src="../js/jquery.ddslick.min.js"></script>
 <script src="../js/candy.js"></script>
 
 </body>
