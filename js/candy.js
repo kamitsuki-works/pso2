@@ -5,10 +5,13 @@ $(function() {
   var jsonPetDataUrl = "../data/pets.json";
   // 取得した全ペット情報
   var summonPets = [];
+  // キャンディjsonパス
+  var jsonCandyDataUrl = "../data/candy.json";
   // 取得した全キャンディ情報
   var candies = [];
   // カテゴリ情報
   var category = ["parfait","roll","cookie","pancake","lemonsoda","crepe","lollipop","sand","gummy"];
+  var categoryName = ["パフェ","ロール","クッキー","ケーキ","ラムネ","クレープ","アメ","サンド","グミ"];
   // カテゴリ毎設置上限
   var maxCategoryCandy = [2,2,3,2,1,1,4,5,20];
 
@@ -34,9 +37,8 @@ $(function() {
    */
   var setPaperCube = function(){
     // ペーパーセルの解除
-    $("li.tile.paper").each(function(){
-      $(this).removeClass("paper");
-    });
+    $("li.tile.paper").removeClass("paper");
+    $("li.cell.paper").removeClass("paper");
     // ペーパーセルのセット
     var paper = summonPets[petId].paper.split(",")
     for(var i = 0; i < paper.length; i++){
@@ -68,9 +70,17 @@ $(function() {
     var candy = candies[candyId];
 
     //== 状態判定 ==
-    // ペーパーキューブ
     for(var r = i; r < i+new Number(candy.height); r++){
+      // 枠外
+      if(r<1 || 8<r){
+        return;
+      }
       for(var c = j; c < j+new Number(candy.width); c++){
+        // 枠外
+        if(c<1 || 8<c){
+          return;
+        }
+        // ペーパーキューブ
         if(candyCell[r][c] < 0){
           return;
         }
@@ -144,7 +154,28 @@ $(function() {
       var candy = candies[candyPos.id];
       countCategoryCandy[candy.category]++;
     }
-    console.log(countCategoryCandy);
+    for(var i = 0; i < category.length; i++){
+      $("div.candyname."+category[i] + " > .right").html(countCategoryCandy[i] +" / "+maxCategoryCandy[i]);
+    }
+    
+    // セット済みキャンディリストの描写
+    var setCandyIdList = []
+    for(var i = 0; i < candies.length; i++){
+      setCandyIdList[candies[i].id] = 0;
+    }
+    for(var i = 0; i < candyList.length; i++){
+      var candyPos = candyList[i];
+      setCandyIdList[candyPos.id]++;
+    }
+    $("ul.settingcandy").html("");
+    for(var i = 0; i < candies.length; i++){
+      var id = $($("ul.candylist li")[i]).val();
+      if(setCandyIdList[id] > 0){
+        var $setting = $("<li>").html(candies[id].name);
+        $setting.append($("<span>").addClass("right").html("×" +setCandyIdList[id]))
+        $("ul.settingcandy").append($setting);
+      }
+    }
   }
 
 
@@ -183,28 +214,25 @@ $(function() {
           showBox();
         }
       });
-//    for (var i = 0; i < summonPets.length; i++){
-//      $("select#selectpet").append($('<option>').html(summonPets[i].name).val(i));
-//    }
   }
   
   /**
    * ペットの情報を取得する。
    */
   var setPet = function(){
-    summonPets = [
-    {"id":"0",text:"ワンダ","paper":"11,14,15,16,18,32,38,42,57,61,67,81,83,84,85,88",imageSrc:"../img/candy/pet0.png",value:0},
-    {"id":"1",text:"トリム","paper":"11,16,17,18,27,48,56,61,65,66,67,71,72,76,81,84",imageSrc:"../img/candy/pet0.png",value:1},
-    {"id":"2",text:"サリィ","paper":"11,12,14,15,17,18,32,37,63,66,74,75,81,82,87,88",imageSrc:"../img/candy/pet0.png",value:2},
-    {"id":"3",text:"マロン","paper":"14,15,18,22,27,28,32,48,51,67,71,72,77,81,84,85",imageSrc:"../img/candy/pet0.png",value:3},
-    {"id":"4",text:"メロン","paper":"11,12,14,22,26,27,41,48,51,58,72,73,77,85,87,88",imageSrc:"../img/candy/pet0.png",value:4},
-    {"id":"5",text:"ラッピー","paper":"12,17,22,27,42,47,51,53,56,58,62,67,74,75,84,85",imageSrc:"../img/candy/pet0.png",value:5},
-    {"id":"6",text:"ヴィオラ","paper":"12,13,15,22,27,32,38,48,51,61,67,72,77,84,86,87",imageSrc:"../img/candy/pet0.png",value:6}
-    ];
-//    $.ajaxSetup({ async: false });
-//    $.getJSON(jsonPetDataUrl,function(json) {
-//      summonPets = json.pets;
-//    });
+//    summonPets = [
+//    {"id":"0",text:"ワンダ","paper":"11,14,15,16,18,32,38,42,57,61,67,81,83,84,85,88",imageSrc:"../img/candy/pet0.png",value:0},
+//    {"id":"1",text:"トリム","paper":"11,16,17,18,27,48,56,61,65,66,67,71,72,76,81,84",imageSrc:"../img/candy/pet1.png",value:1},
+//    {"id":"2",text:"サリィ","paper":"11,12,14,15,17,18,32,37,63,66,74,75,81,82,87,88",imageSrc:"../img/candy/pet2.png",value:2},
+//    {"id":"3",text:"マロン","paper":"14,15,18,22,27,28,32,48,51,67,71,72,77,81,84,85",imageSrc:"../img/candy/pet3.png",value:3},
+//    {"id":"4",text:"メロン","paper":"11,12,14,22,26,27,41,48,51,58,72,73,77,85,87,88",imageSrc:"../img/candy/pet4.png",value:4},
+//    {"id":"5",text:"ラッピー","paper":"12,17,22,27,42,47,51,53,56,58,62,67,74,75,84,85",imageSrc:"../img/candy/pet5.png",value:5},
+//    {"id":"6",text:"ヴィオラ","paper":"12,13,15,22,27,32,38,48,51,61,67,72,77,84,86,87",imageSrc:"../img/candy/pet6.png",value:6}
+//    ];
+    $.ajaxSetup({ async: false });
+    $.getJSON(jsonPetDataUrl,function(json) {
+      summonPets = json.pets;
+    });
     setSelectPet();
     setPaperCube();
   }
@@ -213,28 +241,48 @@ $(function() {
    * キャンディリストの設定
    */
   var setCandyList = function(){
-    for (var i = 0; i < candies.length; i++){
-     $("ul#candylist").append($('<li>').html(candies[i].name).val(i).attr("title",candies[i].title));
+    for (var i = 0; i < category.length; i++){
+      // キャンディリスト枠
+      var $candyset = $('<div>').addClass("candyset").addClass(category[i]);
+      $candyset.append($('<div>').addClass("candyset-header").html(categoryName[i]));
+      $candyset.append($('<ul>').addClass("candylist").attr("id",category[i]+"list"));
+      $("div.candysetlist").append($candyset);
+      // キャンディカウント
+      var $candyname = $('<div>').addClass("candyname").addClass(category[i]).html(categoryName[i]);
+      $candyname.append($('<span>').addClass("right").html("0 / " + maxCategoryCandy[i]));
+      $("div.candycount").append($candyname);
+      
     }
-    $("ul#candylist li[value=" + candyId + "]").addClass("active");
+    
+    // キャンディのセット
+    for (var i = 0; i < candies.length; i++){
+     var $li = $('<li>').html(candies[i].name).val(candies[i].id).attr("title",candies[i].title);
+     $li.append( $('<span>').html(candies[i].width +"×"+ candies[i].height).addClass("right"));
+     $("ul.candylist#" + category[candies[i].category] + "list").append($li);
+    }
+    $("ul.candylist li[value=" + candyId + "]").addClass("active");
   }
 
   /**
    * キャンディの情報を取得する。
    */
   var setCandy = function(){
-    candies = [
-    {"id":"0","width":"2","height":"2","category":"0","name":"ブラストパフェ","title":"フォトンブラストゲージに応じてペットの攻撃威力が変動する。"},
-    {"id":"1","width":"2","height":"2","category":"1","name":"ぎりぎりロール","title":"ペットがHP低下時にダメージを受けるとまれにHPが回復する。"},
-    {"id":"2","width":"2","height":"2","category":"2","name":"スタミナクッキー","title":"ペットのHPが100上昇。"},
-    {"id":"3","width":"2","height":"2","category":"3","name":"1段パンケーキ","title":"ペットの属性値が10上昇する。"},
-    {"id":"4","width":"1","height":"1","category":"4","name":"ほのおのラムネ","title":"ペットの攻撃属性を炎属性に変更する。"},
-    {"id":"5","width":"2","height":"2","category":"5","name":"リッチなクレープ","title":"出現するメセタの金額が5%増加する。"},
-    {"id":"6","width":"1","height":"4","category":"6","name":"スピリタアメ","title":"PPが5上昇。"},
-    {"id":"7","width":"2","height":"1","category":"7","name":"ボディサンド","title":"ペットの打撃防御が100上昇。"},
-    {"id":"8","width":"4","height":"1","category":"6","name":"アビリティアメ","title":"ペットの全ての能力が5上昇。"},
-    {"id":"9","width":"1","height":"1","category":"8","name":"スタミナグミ","title":"ペットのHPが10上昇。"}
-    ];
+    $.ajaxSetup({ async: false });
+    $.getJSON(jsonCandyDataUrl,function(json) {
+      candies = json.candy;
+    });
+//    candies = [
+//    {"id":"0","width":"2","height":"2","category":"0","name":"ブラストパフェ","title":"フォトンブラストゲージに応じてペットの攻撃威力が変動する。"},
+//    {"id":"1","width":"2","height":"2","category":"1","name":"ぎりぎりロール","title":"ペットがHP低下時にダメージを受けるとまれにHPが回復する。"},
+//    {"id":"2","width":"2","height":"2","category":"2","name":"スタミナクッキー","title":"ペットのHPが100上昇。"},
+//    {"id":"3","width":"2","height":"2","category":"3","name":"1段パンケーキ","title":"ペットの属性値が10上昇する。"},
+//    {"id":"4","width":"1","height":"1","category":"4","name":"ほのおのラムネ","title":"ペットの攻撃属性を炎属性に変更する。"},
+//    {"id":"5","width":"2","height":"2","category":"5","name":"リッチなクレープ","title":"出現するメセタの金額が5%増加する。"},
+//    {"id":"6","width":"1","height":"4","category":"6","name":"スピリタアメ","title":"PPが5上昇。"},
+//    {"id":"7","width":"2","height":"1","category":"7","name":"ボディサンド","title":"ペットの打撃防御が100上昇。"},
+//    {"id":"8","width":"4","height":"1","category":"6","name":"アビリティアメ","title":"ペットの全ての能力が5上昇。"},
+//    {"id":"9","width":"1","height":"1","category":"8","name":"スタミナグミ","title":"ペットのHPが10上昇。"}
+//    ];
     setCandyList();
   }
 
@@ -278,10 +326,13 @@ $(function() {
   setCandy();
   
   // キャンディ変更監視
-  $(document).on("click","ul#candylist li",function(){
+  $(document).on("click","ul.candylist li",function(){
     candyId = $(this).val();
-    $("ul#candylist li.active").removeClass("active");
+    $("ul.candylist li.active").removeClass("active");
     $(this).addClass("active");
+  });
+  $(document).on("click","div.candyset-header",function(){
+    $(this).parent("div.candyset").find("ul.candylist").slideToggle();
   });
 
   // キャンディボックス左クリック監視

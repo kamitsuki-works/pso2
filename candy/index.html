@@ -11,29 +11,49 @@
   <link rel="shortcut icon" href="../favicon.ico" />
   <meta name="viewport" content="width = device-width, initial-scale = 0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable = no">
 <style>
-body{background-color:#cef;}
-div.left{float:left; width:400px;}
+html{height:100%;}
+body{background-color:#cef;margin:0;padding:0;height:100%;}
+div.body{width:900px;height:100%;}
+div.left{float:left; width:230px;overflow-y:scroll;padding:0 5px 0 15px;height:100%;}
+.right{float:right;}
+
+div.pet{margin:10px 0;}
 
 body .dd-select{border:solid 1px #8ae;}
 body .dd-selected{padding:2px;background-color:#f3fcff;color:#369;}
-body .dd-selected .dd-selected-image{height:40px;width:41px;margin:2px 5px -2px 3px;}
+body .dd-selected .dd-selected-image{height:40px;width:41px;margin:2px 7px -2px 3px;}
 body .dd-option{padding:2px;font-size:12px;}
 body .dd-option .dd-option-image{height:40px;width:41px;margin:2px 5px 2px 3px;}
 
+div.candyset{width:190px;margin:5px 0;padding:5px;border-radius:5px;}
+div.candyset-header{height:20px;line-height:20px;font-weight:bold;}
+div.candyset.parfait{background-color:#f99;color:#933;}
+div.candyset.roll{background-color:#fc9;color:#930;}
+div.candyset.cookie{background-color:#ff9;color:#990;}
+div.candyset.pancake{background-color:#cf9;color:#390;}
+div.candyset.lemonsoda{background-color:#9f9;color:#090;}
+div.candyset.crepe{background-color:#9fc;color:#093;}
+div.candyset.lollipop{background-color:#99f;color:#009;}
+div.candyset.sand{background-color:#c9f;color:#309;}
+div.candyset.gummy{background-color:#f9f;color:#909;}
+ul.candylist{width:190px;background-color:#fff;padding:0;margin:0;}
+ul.candylist li{cursor:pointer;display:block;padding:3px 5px;background-color:#fff;border:2px solid #fff;color:#000;}
+ul.candylist li.active{background-color:#ffd3d3;border:2px solid #f33;color:#630;border-radius:10px;}
 
-ul#candylist li.active{color:red;}
+div.candycount{display:inline-block;width:402px;padding:10px;margin:10px 20px 0;border:2px solid #8ae;border-radius:10px;position:relative;background-color:#f3fcff;color:#369;}
+div.candycount .candyname{display:inline-block;width:110px;margin:0 10px 0;height:20px;line-height:20px;font-weight:bold;}
 
-div.candybox{display:inline-block;height:400px;width:400px;padding:3px;border:10px solid #8ae;border-radius:10px;font-size:0;position:relative;}
-div.candybox div.candy{display:inline-block;position:absolute;z-index:0;border-radius:16px;opacity:0.5;}
-div.candybox div.candy.parfait{background-color:red;}
-div.candybox div.candy.roll{background-color:blue;}
-div.candybox div.candy.cookie{background-color:navy;}
-div.candybox div.candy.pancake{background-color:yellow;}
-div.candybox div.candy.lemonsoda{background-color:black;}
-div.candybox div.candy.crepe{background-color:green;}
-div.candybox div.candy.lollipop{background-color:gray;}
-div.candybox div.candy.sand{background-color:purple;}
-div.candybox div.candy.gummy{background-color:pink;}
+div.candybox{display:inline-block;height:400px;width:400px;padding:3px;margin:10px 20px 20px;border:10px solid #8ae;border-radius:10px;font-size:0;position:relative;}
+div.candybox div.candy{display:inline-block;position:absolute;z-index:0;border-radius:16px;opacity:0.95;}
+div.candybox div.candy.parfait{background-color:#f99;}
+div.candybox div.candy.roll{background-color:#fc9;}
+div.candybox div.candy.cookie{background-color:#ff9;}
+div.candybox div.candy.pancake{background-color:#cf9;}
+div.candybox div.candy.lemonsoda{background-color:#9f9;}
+div.candybox div.candy.crepe{background-color:#9fc;}
+div.candybox div.candy.lollipop{background-color:#99f;}
+div.candybox div.candy.sand{background-color:#c9f;}
+div.candybox div.candy.gummy{background-color:#f9f;}
 ul#candytile{padding:0;margin:0;position:absolute;z-index:-1;}
 ul#candytile li.tile{display:inline-block;height:50px;width:50px;background-color:#fff;}
 ul#candytile li.tile.colored{background-color:#acf;}
@@ -42,28 +62,40 @@ ul#candycell{padding:0;margin:0;position:absolute;z-index:1;}
 ul#candycell li.cell{display:inline-block;height:50px;width:50px;}
 .paper{cursor:no-drop;}
 
+div.settingcandy{float:right;width:170px;margin:10px 0;padding:5px;border-radius:5px;background-color:#8ae;}
+div.settingcandy-header{height:26px;line-height:26px;font-weight:bold;text-align:center;margin-bottom:5px;}
+ul.settingcandy{width:170px;background-color:#fff;padding:0;margin:0;min-height:480px;}
+ul.settingcandy li{display:block;padding:3px 5px;background-color:#fff;border:2px solid #fff;color:#000;}
+
 
 </style>
 
 </head>
 <body>
-
-<div class="left">
- <div class="pet">
-  <select id="selectpet" name="selectpet">
-  </select>
+<div class="body">
+ <div class="left">
+  <div class="pet">
+   <select id="selectpet" name="selectpet">
+   </select>
+  </div>
+  <div class="candysetlist">
+  </div>
  </div>
- <div class="candy">
-  <ul id="candylist">
-  </ul>
- </div>
-</div>
 
-<div class="candybox">
-  <ul id="candytile">
-  </ul>
-  <ul id="candycell">
-  </ul>
+ <div class="settingcandy">
+  <div class="settingcandy-header">セットしたキャンディ</div>
+  <ul class="settingcandy"></ul>
+ </div>
+
+ <div class="candycount">
+ </div>
+ <div class="candybox">
+   <ul id="candytile">
+   </ul>
+   <ul id="candycell">
+   </ul>
+ </div>
+
 </div>
 
 <script src="../js/jquery.js"></script>
