@@ -240,7 +240,9 @@ $(function() {
         setPaperCube();
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){
-        console.log("hoge");
+        console.log(XMLHttpRequest);
+        console.log(textStatus);
+        console.log(errorThrown);
       }
     });
   }
