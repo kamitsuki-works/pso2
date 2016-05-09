@@ -220,29 +220,17 @@ $(function() {
    * ペットの情報を取得する。
    */
   var setPet = function(){
-//    summonPets = [
-//    {"id":"0",text:"ワンダ","paper":"11,14,15,16,18,32,38,42,57,61,67,81,83,84,85,88",imageSrc:"../img/candy/pet0.png",value:0},
-//    {"id":"1",text:"トリム","paper":"11,16,17,18,27,48,56,61,65,66,67,71,72,76,81,84",imageSrc:"../img/candy/pet1.png",value:1},
-//    {"id":"2",text:"サリィ","paper":"11,12,14,15,17,18,32,37,63,66,74,75,81,82,87,88",imageSrc:"../img/candy/pet2.png",value:2},
-//    {"id":"3",text:"マロン","paper":"14,15,18,22,27,28,32,48,51,67,71,72,77,81,84,85",imageSrc:"../img/candy/pet3.png",value:3},
-//    {"id":"4",text:"メロン","paper":"11,12,14,22,26,27,41,48,51,58,72,73,77,85,87,88",imageSrc:"../img/candy/pet4.png",value:4},
-//    {"id":"5",text:"ラッピー","paper":"12,17,22,27,42,47,51,53,56,58,62,67,74,75,84,85",imageSrc:"../img/candy/pet5.png",value:5},
-//    {"id":"6",text:"ヴィオラ","paper":"12,13,15,22,27,32,38,48,51,61,67,72,77,84,86,87",imageSrc:"../img/candy/pet6.png",value:6}
-//    ];
     $.ajax({
       url:jsonPetDataUrl,
       type:"get",
       dataType:"json",
       success:function(response){
-        console.log(response);
         summonPets = response.pets;
         setSelectPet();
         setPaperCube();
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){
-        console.log(XMLHttpRequest);
-        console.log(textStatus);
-        console.log(errorThrown);
+        alert("データの読み込みに失敗しました！");
       }
     });
   }
@@ -277,20 +265,18 @@ $(function() {
    * キャンディの情報を取得する。
    */
   var setCandy = function(){
-
-    candies = [
-//    {"id":"0","width":"2","height":"2","category":"0","name":"ブラストパフェ","title":"フォトンブラストゲージに応じてペットの攻撃威力が変動する。"},
-//    {"id":"1","width":"2","height":"2","category":"1","name":"ぎりぎりロール","title":"ペットがHP低下時にダメージを受けるとまれにHPが回復する。"},
-//    {"id":"2","width":"2","height":"2","category":"2","name":"スタミナクッキー","title":"ペットのHPが100上昇。"},
-//    {"id":"3","width":"2","height":"2","category":"3","name":"1段パンケーキ","title":"ペットの属性値が10上昇する。"},
-//    {"id":"4","width":"1","height":"1","category":"4","name":"ほのおのラムネ","title":"ペットの攻撃属性を炎属性に変更する。"},
-//    {"id":"5","width":"2","height":"2","category":"5","name":"リッチなクレープ","title":"出現するメセタの金額が5%増加する。"},
-//    {"id":"6","width":"1","height":"4","category":"6","name":"スピリタアメ","title":"PPが5上昇。"},
-//    {"id":"7","width":"2","height":"1","category":"7","name":"ボディサンド","title":"ペットの打撃防御が100上昇。"},
-//    {"id":"8","width":"4","height":"1","category":"6","name":"アビリティアメ","title":"ペットの全ての能力が5上昇。"},
-    {"id":"9","width":"1","height":"1","category":"8","name":"スタミナグミ","title":"ペットのHPが10上昇。"}
-    ];
-    setCandyList();
+    $.ajax({
+      url:jsonCandyDataUrl,
+      type:"get",
+      dataType:"json",
+      success:function(response){
+        candies = response.candy;
+        setCandyList();
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        alert("データの読み込みに失敗しました！");
+      }
+    });
   }
 
   /**
