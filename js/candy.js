@@ -232,12 +232,16 @@ $(function() {
     $.ajax({
       url:jsonPetDataUrl,
       type:"get",
-      dataType:"json"
-    }).then(function(response){
-      console.log(response)
-      summonPets = response.pets;
-      setSelectPet();
-      setPaperCube();
+      dataType:"json",
+      success:function(response){
+        console.log(response);
+        summonPets = response.pets;
+        setSelectPet();
+        setPaperCube();
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("hoge");
+      }
     });
   }
 
