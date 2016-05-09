@@ -177,7 +177,7 @@ $(function() {
     }
     
     // URLの表示
-    var url = window.location.protocol+window.location.hostname+window.location.pathname;
+    var url = window.location.protocol+"//"+window.location.hostname+window.location.pathname;
     var param = "?" + petId;
     for(var i = 0; i < candyList.length; i++){
       param += candyList[i].id<10 ? "0"+candyList[i].id : candyList[i].id;
@@ -204,7 +204,7 @@ $(function() {
         putCandy(x,y);
       }
     }
-    candyId = 1;
+    candyId = 0;
     showBox();
   }
   
