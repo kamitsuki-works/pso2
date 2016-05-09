@@ -1,12 +1,10 @@
 $(function() {
 
 //===== マスタ情報 =====
-  // ペットjsonパス
-  var jsonPetDataUrl = "../data/pets.json";
+  // jsonパス
+  var jsonCandyDataUrl = "../data/candy.json";
   // 取得した全ペット情報
   var summonPets = [];
-  // キャンディjsonパス
-  var jsonCandyDataUrl = "../data/candy.json";
   // 取得した全キャンディ情報
   var candies = [];
   // カテゴリ情報
@@ -29,6 +27,8 @@ $(function() {
   // アクティブなキャンディ
   var candyId;
 
+  // パラメータ入力
+  var param;
 
 //===== 関数定義(常時展開) =====
 
@@ -121,7 +121,6 @@ $(function() {
   }
 
 
-
   /**
    * キャンディボックスの再描写
    */
@@ -176,9 +175,39 @@ $(function() {
         $("ul.settingcandy").append($setting);
       }
     }
+    
+    // URLの表示
+    var url = window.location.protocol+window.location.hostname+window.location.pathname;
+    var param = "?" + petId;
+    for(var i = 0; i < candyList.length; i++){
+      param += candyList[i].id<10 ? "0"+candyList[i].id : candyList[i].id;
+      param += candyList[i].row;
+      param += candyList[i].col;
+    }
+    $("input.url").val(url+param);
   }
 
+  /**
+   * パラメータのキャンディセット
+   */
+  var setParamCandies = function(){
+    if(param.length < 5){
+      return;
+    }
 
+    for(var i = 0; i <= (param.length-1)/4 -1; i++){
+      var id = Number(param[i*4+1]+param[i*4+2]);
+      var x = Number(param[i*4+3]);
+      var y = Number(param[i*4+4]);
+      if(id >= 0 && 0<x && x<9 && 0<y && y<9){
+        candyId = id;
+        putCandy(x,y);
+      }
+    }
+    candyId = 1;
+    showBox();
+  }
+  
 
 //===== 関数定義(初回のみ) =====
 
@@ -208,31 +237,13 @@ $(function() {
         data: summonPets,
         width: 200,
         imagePosition: "left",
+        defaultSelectedIndex:petId,
         onSelected: function (data) {
           petId = data.selectedData.id | 0;
           setPaperCube();
           showBox();
         }
       });
-  }
-  
-  /**
-   * ペットの情報を取得する。
-   */
-  var setPet = function(){
-    $.ajax({
-      url:jsonPetDataUrl,
-      type:"get",
-      dataType:"json",
-      success:function(response){
-        summonPets = response.pets;
-        setSelectPet();
-        setPaperCube();
-      },
-      error:function(XMLHttpRequest, textStatus, errorThrown){
-        alert("データの読み込みに失敗しました！");
-      }
-    });
   }
 
   /**
@@ -262,21 +273,82 @@ $(function() {
   }
 
   /**
-   * キャンディの情報を取得する。
+   * ペットとキャンディの情報を取得する。
    */
   var setCandy = function(){
+
     $.ajax({
       url:jsonCandyDataUrl,
       type:"get",
       dataType:"json",
       success:function(response){
+        summonPets = response.pets;
         candies = response.candy;
+        setSelectPet();
+        setPaperCube();
         setCandyList();
+        setParamCandies();
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){
         alert("データの読み込みに失敗しました！");
       }
     });
+/*
+        candies = [
+  {"id":"0","width":"2","height":"2","category":"0","name":"ブラストパフェ","title":"フォトンブラストゲージに応じてペットの攻撃威力が変動する。"},
+  {"id":"1","width":"2","height":"2","category":"0","name":"メガトンパフェ","title":"ペットが強敵に与えるダメージが上昇する。"},
+  {"id":"2","width":"2","height":"2","category":"0","name":"ひっさつパフェ","title":"ペットの攻撃のクリティカル時のダメージが上昇する。"},
+  {"id":"3","width":"2","height":"2","category":"0","name":"ぴったりパフェ","title":"ペットが弱点属性で攻撃した時のダメージが上昇。"},
+  {"id":"4","width":"2","height":"2","category":"0","name":"がむしゃらパフェ","title":"ペットPA使用時にPP消費量が増加し威力が上昇。"},
+  {"id":"5","width":"2","height":"2","category":"0","name":"はりきりパフェ","title":"ペットの通常攻撃のダメージが上昇する。"},
+  {"id":"6","width":"2","height":"2","category":"1","name":"ぎりぎりロール","title":"ペットがHP低下時にダメージを受けるとまれにHPが回復する。"},
+  {"id":"7","width":"2","height":"2","category":"1","name":"ふんばりロール","title":"ペットのHPが半分以下になった時、一定時間被ダメージが減少する。"},
+  {"id":"8","width":"2","height":"2","category":"1","name":"おうえんロール","title":"シフタでのシンパシー発動時、ペットの攻撃力、防御力、クリティカル率が強化される。"},
+  {"id":"9","width":"2","height":"2","category":"1","name":"むてきロール","title":"フォトンブラストゲージが満タンで一定時間ペットが無敵になる。"},
+  {"id":"10","width":"2","height":"2","category":"1","name":"しっかりロール","title":"ペットが戦闘不能から復帰するまでの時間が短縮される。"},
+  {"id":"11","width":"2","height":"2","category":"1","name":"へんかんロール","title":"ペットの各防御力の一部を対応する攻撃力に変換する。"},
+  {"id":"12","width":"2","height":"2","category":"1","name":"みがわりロール","title":"アルターエゴ発動時、消費PPが減少する。"},
+  {"id":"13","width":"2","height":"2","category":"1","name":"つよがりロール","title":"ペットが強敵から受けるダメージが減少する。"},
+  {"id":"14","width":"2","height":"2","category":"2","name":"スタミナクッキー","title":"ペットのHPが100上昇。"},
+  {"id":"15","width":"2","height":"2","category":"2","name":"スピリタクッキー","title":"PPが5上昇。"},
+  {"id":"16","width":"2","height":"2","category":"2","name":"パワークッキー","title":"ペットの打撃力が35上昇。"},
+  {"id":"17","width":"2","height":"2","category":"2","name":"シュートクッキー","title":"ペットの射撃力が35上昇。"},
+  {"id":"18","width":"2","height":"2","category":"2","name":"テクニクッキー","title":"ペットの法撃力が35上昇。"},
+  {"id":"19","width":"2","height":"2","category":"2","name":"アームクッキー","title":"ペットの技量が40上昇。"},
+  {"id":"20","width":"2","height":"2","category":"3","name":"1段パンケーキ","title":"ペットの属性値が10上昇する。"},
+  {"id":"21","width":"2","height":"2","category":"3","name":"2段パンケーキ","title":"ペットの属性値が20上昇する。"},
+  {"id":"22","width":"2","height":"2","category":"3","name":"3段パンケーキ","title":"ペットの属性値が30上昇する。"},
+  {"id":"23","width":"1","height":"1","category":"4","name":"ほのおのラムネ","title":"ペットの攻撃属性を炎属性に変更する。"},
+  {"id":"24","width":"1","height":"1","category":"4","name":"こおりのラムネ","title":"ペットの攻撃属性を氷属性に変更する。"},
+  {"id":"25","width":"1","height":"1","category":"4","name":"かみなりのラムネ","title":"ペットの攻撃属性を雷属性に変更する。"},
+  {"id":"26","width":"1","height":"1","category":"4","name":"かぜのラムネ","title":"ペットの攻撃属性を風属性に変更する。"},
+  {"id":"27","width":"1","height":"1","category":"4","name":"ひかりのラムネ","title":"ペットの攻撃属性を光属性に変更する。"},
+  {"id":"28","width":"1","height":"1","category":"4","name":"やみのラムネ","title":"ペットの攻撃属性を闇属性に変更する。"},
+  {"id":"29","width":"2","height":"2","category":"5","name":"リッチなクレープ","title":"出現するメセタの金額が5%増加する。"},
+  {"id":"30","width":"2","height":"2","category":"5","name":"おとなのクレープ","title":"獲得経験値が5%増加。"},
+  {"id":"31","width":"2","height":"2","category":"5","name":"ラッキークレープ","title":"レアドロップ倍率が5%増加。"},
+  {"id":"32","width":"1","height":"4","category":"6","name":"スピリタアメ","title":"PPが5上昇。"},
+  {"id":"33","width":"4","height":"1","category":"6","name":"ブロウレジストアメ","title":"ペットの打撃耐性が5%上昇。。"},
+  {"id":"34","width":"4","height":"1","category":"6","name":"ショットレジストアメ","title":"ペットの射撃耐性が5%上昇。"},
+  {"id":"35","width":"4","height":"1","category":"6","name":"マインドレジストアメ","title":"ペットの法撃耐性が5%上昇。"},
+  {"id":"36","width":"4","height":"1","category":"6","name":"アビリティアメ","title":"ペットの全ての能力が5上昇。"},
+  {"id":"37","width":"2","height":"1","category":"7","name":"ボディサンド","title":"ペットの打撃防御が100上昇。"},
+  {"id":"38","width":"2","height":"1","category":"7","name":"リアクトサンド","title":"ペットの射撃防御が100上昇。"},
+  {"id":"39","width":"2","height":"1","category":"7","name":"マインドサンド","title":"ペットの法撃防御が100上昇。"},
+  {"id":"40","width":"1","height":"1","category":"8","name":"スタミナグミ","title":"ペットのHPが10上昇。"}
+];
+   summonPets = [{"id":"0","text":"ワンダ","paper":"11,14,15,16,18,32,38,42,57,61,67,81,83,84,85,88","imageSrc":"../img/candy/pet0.png","value":0},
+    {"id":"1","text":"トリム","paper":"11,16,17,18,27,48,56,61,65,66,67,71,72,76,81,84","imageSrc":"../img/candy/pet1.png","value":1},
+    {"id":"2","text":"サリィ","paper":"11,12,14,15,17,18,32,37,63,66,74,75,81,82,87,88","imageSrc":"../img/candy/pet2.png","value":2},
+    {"id":"3","text":"マロン","paper":"14,15,18,22,27,28,32,48,51,67,71,72,77,81,84,85","imageSrc":"../img/candy/pet3.png","value":3},
+    {"id":"4","text":"メロン","paper":"11,12,14,22,26,27,41,48,51,58,72,73,77,85,87,88","imageSrc":"../img/candy/pet4.png","value":4},
+    {"id":"5","text":"ラッピー","paper":"12,17,22,27,42,47,51,53,56,58,62,67,74,75,84,85","imageSrc":"../img/candy/pet5.png","value":5},
+    {"id":"6","text":"ヴィオラ","paper":"12,13,15,22,27,32,38,48,51,61,67,72,77,84,86,87","imageSrc":"../img/candy/pet6.png","value":6}];
+        setSelectPet();
+        setPaperCube();
+        setCandyList();
+        setParamCandies();
+*/
   }
 
   /**
@@ -305,17 +377,17 @@ $(function() {
 
 //===== 初回実行時 =====
 
+  // パラメータ取得
+  param = location.search.substring(1);
+
   // デフォルト値
-  petId = 0;
+  petId = (param.length>0 && Number(param[0])>0) ? Number(param[0]) : 0;
   candyId = 0;
 
   // キャンディボックスの設定
   makeDefaultCandyBox();
 
-  // ペットの設定
-  setPet();
-
-  // キャンディの設定
+  // ペットとキャンディの設定
   setCandy();
   
   // キャンディ変更監視
@@ -353,5 +425,8 @@ $(function() {
     showBox();
     return false;
   });
+  
+
+  
 });
 
