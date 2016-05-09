@@ -229,12 +229,16 @@ $(function() {
 //    {"id":"5",text:"ラッピー","paper":"12,17,22,27,42,47,51,53,56,58,62,67,74,75,84,85",imageSrc:"../img/candy/pet5.png",value:5},
 //    {"id":"6",text:"ヴィオラ","paper":"12,13,15,22,27,32,38,48,51,61,67,72,77,84,86,87",imageSrc:"../img/candy/pet6.png",value:6}
 //    ];
-    $.ajaxSetup({ async: false });
-    $.getJSON(jsonPetDataUrl,function(json) {
-      summonPets = json.pets;
+    $.ajax({
+      url:jsonPetDataUrl,
+      type:"get",
+      dataType:"json"
+    }).then(function(response){
+      console.log(response)
+      summonPets = response.pets;
+      setSelectPet();
+      setPaperCube();
     });
-    setSelectPet();
-    setPaperCube();
   }
 
   /**
@@ -267,11 +271,8 @@ $(function() {
    * キャンディの情報を取得する。
    */
   var setCandy = function(){
-    $.ajaxSetup({ async: false });
-    $.getJSON(jsonCandyDataUrl,function(json) {
-      candies = json.candy;
-    });
-//    candies = [
+
+    candies = [
 //    {"id":"0","width":"2","height":"2","category":"0","name":"ブラストパフェ","title":"フォトンブラストゲージに応じてペットの攻撃威力が変動する。"},
 //    {"id":"1","width":"2","height":"2","category":"1","name":"ぎりぎりロール","title":"ペットがHP低下時にダメージを受けるとまれにHPが回復する。"},
 //    {"id":"2","width":"2","height":"2","category":"2","name":"スタミナクッキー","title":"ペットのHPが100上昇。"},
@@ -281,8 +282,8 @@ $(function() {
 //    {"id":"6","width":"1","height":"4","category":"6","name":"スピリタアメ","title":"PPが5上昇。"},
 //    {"id":"7","width":"2","height":"1","category":"7","name":"ボディサンド","title":"ペットの打撃防御が100上昇。"},
 //    {"id":"8","width":"4","height":"1","category":"6","name":"アビリティアメ","title":"ペットの全ての能力が5上昇。"},
-//    {"id":"9","width":"1","height":"1","category":"8","name":"スタミナグミ","title":"ペットのHPが10上昇。"}
-//    ];
+    {"id":"9","width":"1","height":"1","category":"8","name":"スタミナグミ","title":"ペットのHPが10上昇。"}
+    ];
     setCandyList();
   }
 
