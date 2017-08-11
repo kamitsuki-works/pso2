@@ -1,0 +1,118 @@
+@charset "UTF-8";
+/* ���� */
+body {
+  position: relative;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  font-family: "Lucida Grande","�q���M�m�p�S Pro W3","Hiragino Kaku Gothic Pro",Osaka,"���C���I",Meiryo,"�l�r �o�S�V�b�N","MS P Gothic",sans-serif,Verdana,Arial,Helvetica;
+  background-color: #010c23;
+  overflow-y: scroll;
+  height: 100%; }
+
+span, div.text {
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre-wrap; }
+
+.clear {
+  clear: both; }
+
+.right {
+  float: right; }
+
+/* ���X�|���V�u�ݒ� */
+@media screen and (max-width: 960px) {
+  div.main {
+    max-width: 640px;
+    min-width: 640px; }
+  div.first {
+    height: 300px; } }
+
+@media screen and (min-width: 961px) and (max-width: 1400px) {
+  div.main {
+    max-width: 960px;
+    min-width: 960px; }
+  div.first {
+    height: 400px; } }
+
+@media screen and (min-width: 1401px) {
+  div.main {
+    max-width: 1360px;
+    min-width: 1360px; }
+  div.first {
+    height: 500px; } }
+
+/* TOP */
+header.top {
+  position: fixed;
+  width: 100%;
+  background-color: #010c23;
+  height: 80px;
+  vertical-align: top;
+  z-index: 10; }
+  header.top a.logo {
+    display: inline-block;
+    height: 60px;
+    margin: 15px 30px 0 50px; }
+  header.top img.logo {
+    height: 50px; }
+  header.top div.main {
+    padding-top: 0; }
+
+div.header_space {
+  height: 80px; }
+
+div.first {
+  min-width: 640px;
+  margin-bottom: 50px;
+  background-image: url(../img/first.jpg);
+  background-position: center center;
+  background-size: 100% auto;
+  position: relative; }
+  div.first a.news {
+    display: inline-block;
+    position: absolute;
+    bottom: 20px;
+    right: 15px; }
+    div.first a.news img {
+      height: 100px; }
+
+div.main {
+  margin: auto;
+  text-align: center; }
+  div.main div.link {
+    display: inline-block;
+    height: 200px;
+    width: 400px;
+    margin: 20px; }
+    div.main div.link a {
+      display: inline-block;
+      height: 100%;
+      width: 100%; }
+      div.main div.link a img.chara {
+        height: 100%;
+        width: 100%;
+        background-color: #040000; }
+  div.main div.btn {
+    text-align: center; }
+    div.main div.btn a img {
+      width: 320px; }
+
+div.account {
+  font-size: 20px;
+  clear: both;
+  width: 640px;
+  text-align: left;
+  border: #def 2px solid;
+  margin: 20px auto 0;
+  border-radius: 10px;
+  background: rgba(155, 175, 195, 0.3); }
+
+div.account img {
+  height: 150px;
+  float: left;
+  margin: 10px 0; }
