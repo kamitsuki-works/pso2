@@ -55,7 +55,7 @@
       }
       if (psum >= 100) {
         v.winf++;
-        return 12;
+        return 11;
       }
       if (isStraight(p)) {
         v.wins++;
@@ -204,7 +204,6 @@
         vs = vsdata[vs_cnt];
         mag = check(dice(vs.dice), dice(3));
         if (mag === 0) {
-          console.log(vs.name + "に負けました。");
           lose(vs_cnt);
           lc = 0;
           vs_cnt = 0;
@@ -216,7 +215,6 @@
         } else {
           lc *= mag;
         }
-        console.log(vs.name + "に勝ちました。獲得LC:" + lc);
         if (v.now + lc >= target || lc >= blc || vs_cnt >= mvs) {
           v.now += lc;
           vs_cnt = 0;
