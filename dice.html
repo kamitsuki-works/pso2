@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <title>ダイス - 上月ちゃん劇場出張所</title>
+  <meta charset="utf-8" />
+  <meta name="keywords" Content="pso2,上月ちゃん,上月弦夜,Moonlight" />
+  <meta name="author" content="Genya Kamitsuki" />
+  <meta name="copyright" content="Genya Kamitsuki" />
+  <meta name="robots" content="noindex,nofollow" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="js/vue.js"></script>
+  <script src="js/dice.js"></script>
+  <link rel="stylesheet" href="css/pso2.css" />
+</head>
+<body>
+<header>
+  <div class="main">
+   <a class="logo"><img src="img/font.png" class="logo"></a>
+  </div>
+</header>
+<div class="header_space"></div>
+<div class="main">
+
+ <div class="card">
+  <h3>Simulate Order</h3>
+  <div class="input now">
+    <label for="now">所持LC</label>
+    <input id="now" type="text" value="0"/>
+  </div>
+  <div class="input target">
+    <label for="target">目標LC</label>
+    <input id="target" type="text" value="100000"/>
+  </div>
+  <div class="input refund">
+    <label for="refund">払い戻し条件</label>
+    <select id="refund">
+      <option value="0">完全勝利</option>
+      <option value="1">対戦相手次第</option>
+      <option value="2">獲得LC次第</option>
+    </select>
+  </div>
+  <div class="input vs">
+    <label for="vs">対戦相手（勝利時に払い戻し）</label>
+    <select id="vs" disabled>
+      <option value="3">ブルーノ</option>
+      <option value="2">アネット</option>
+      <option value="1">ジェネ</option>
+      <option value="0">モア</option>
+    </select>
+  </div>
+  <div class="input lc">
+    <label for="lc">獲得LC（入力値以上なら払い戻し）</label>
+    <input id="lc" type="text" value="10000" disabled />
+  </div>
+  <button type="button" class="btn start">Simulation Start</button>
+ </div>
+ <div class="card" id="result">
+  <h3>Simulate Result</h3>
+  <div class="count">挑戦回数 <span>{{ count }}</span></div>
+  <div class="count">必要日数 <span>{{ Math.ceil(count/3) }}</span></div>
+  <div class="result">所持LC <span>{{ now }}</span></div>
+  <table>
+    <thead><tr><th></th><th>WIN</th><th>LOSE</th></tr></thead>
+    <tbody>
+      <tr><th>vs モア</th><td>{{ win0 }}</td><td>{{ lose0 }}</td></tr>
+      <tr><th>vs ジェネ</th><td>{{ win1 }}</td><td>{{ lose1 }}</td></tr>
+      <tr><th>vs アネット</th><td>{{ win2 }}</td><td>{{ lose2 }}</td></tr>
+      <tr><th>vs ブルーノ</th><td>{{ win3 }}</td><td>{{ lose3 }}</td></tr>
+      <tr><th>vs セラフィ</th><td>{{ win4 }}</td><td>{{ lose4 }}</td></tr>
+    </tbody>
+  </table>
+  <table>
+    <thead><tr><th>FEVER</th><th>Straight</th><th>Double</th><th>Normal</th></tr></thead>
+    <tbody>
+      <tr><td>{{ winf }}</td><td>{{ wins }}</td><td>{{ wind }}</td><td>{{ winn }}</td></tr>
+    </tbody>
+  </table>
+
+
+ </div>
+
+</div>
+</body>
+</html>
