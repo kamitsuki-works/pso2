@@ -4,10 +4,10 @@
     vsdata = [
       {
         name: 'モア',
-        dice: 2
+        dice: 1
       }, {
         name: 'ジェネ',
-        dice: 3
+        dice: 2
       }, {
         name: 'アネット',
         dice: 3
