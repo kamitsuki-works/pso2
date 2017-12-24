@@ -24,62 +24,122 @@ span, div.text {
 .right {
   float: right; }
 
-/* ���X�|���V�u�ݒ� */
-@media screen and (max-width: 960px) {
-  div.main {
-    max-width: 640px;
-    min-width: 640px; }
-  div.first {
-    height: 300px; } }
-
-@media screen and (min-width: 961px) and (max-width: 1400px) {
-  div.main {
-    max-width: 960px;
-    min-width: 960px; }
-  div.first {
-    height: 400px; } }
-
-@media screen and (min-width: 1401px) {
-  div.main {
-    max-width: 1360px;
-    min-width: 1360px; }
-  div.first {
-    height: 500px; } }
+.mb-xs {
+  margin-bottom: 15px; }
 
 /* TOP */
-header.top {
-  position: fixed;
+div.top {
+  height: 400px;
   width: 100%;
-  background-color: #010c23;
-  height: 80px;
-  vertical-align: top;
-  z-index: 10; }
-  header.top a.logo {
-    display: inline-block;
-    height: 60px;
-    margin: 15px 30px 0 50px; }
-  header.top img.logo {
-    height: 50px; }
-  header.top div.main {
-    padding-top: 0; }
-
-div.header_space {
-  height: 80px; }
-
-div.first {
-  min-width: 640px;
-  margin-bottom: 50px;
-  background-image: url(../img/first.jpg);
+  background-image: url(../img/pso20160111_053331_000_R.jpg);
   background-position: center center;
-  background-size: 100% auto;
   position: relative; }
-  div.first a.news {
+  div.top a.news {
     display: inline-block;
     position: absolute;
     bottom: 20px;
     right: 15px; }
-    div.first a.news img {
+    div.top a.news img {
       height: 100px; }
+  div.top > div {
+    background-color: rgba(80, 80, 100, 0.3);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    text-align: center; }
+  div.top .top_btn {
+    height: 130px;
+    position: absolute;
+    bottom: 0;
+    text-align: left; }
+    div.top .top_btn a img {
+      height: 120px;
+      transform: rotate(-3deg);
+      transition: 0.1s; }
+    div.top .top_btn a:hover img {
+      transform: rotate(0deg); }
+
+div.info {
+  text-align: right;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 1000px) {
+  div.top .top_btn {
+    width: 100%;
+    left: 0;
+    margin-left: 0; } }
+
+@media screen and (min-width: 1001px) {
+  div.top .top_btn {
+    width: 1000px;
+    left: 50%;
+    margin-left: -500px; } }
+
+div.container {
+  margin: 10px auto 20px;
+  text-align: center; }
+  div.container .half {
+    display: inline-block;
+    position: relative;
+    width: 400px;
+    vertical-align: top; }
+    div.container .half img.full {
+      width: 100%; }
+    div.container .half .simulate {
+      display: inline-block;
+      position: absolute;
+      bottom: 30px;
+      left: 48px;
+      width: 300px;
+      height: 50px;
+      overflow: hidden;
+      border: 2px #fff solid;
+      font-size: 36px;
+      line-height: 54px;
+      border-radius: 20px;
+      vertical-align: bottom;
+      text-decoration: none;
+      transition: 0.3s; }
+      div.container .half .simulate .btn_before {
+        width: 100%;
+        transition: 0.3s;
+        color: #fff;
+        position: absolute;
+        left: 0;
+        top: 0;
+        text-align: center; }
+      div.container .half .simulate:hover .btn_before {
+        top: 100%;
+        opacity: 0; }
+      div.container .half .simulate .btn_after {
+        width: 100%;
+        transition: 0.3s;
+        color: #012;
+        background-color: #9bd;
+        position: absolute;
+        left: 0;
+        top: -100%;
+        text-align: center;
+        opacity: 0; }
+      div.container .half .simulate:hover .btn_after {
+        top: 0;
+        opacity: 1; }
+    div.container .half img.face {
+      display: inline-block;
+      vertical-align: top;
+      width: 76px; }
+    div.container .half .msg {
+      display: inline-block;
+      vertical-align: top;
+      width: 213px;
+      height: 36px;
+      color: #257;
+      text-align: left;
+      padding: 38px 15px 0 48px;
+      background-image: url(../img/Gchat_l.png); }
 
 div.main {
   margin: auto;
@@ -102,20 +162,160 @@ div.main {
     div.main div.btn a img {
       width: 320px; }
 
-div.account {
-  font-size: 20px;
-  clear: both;
-  width: 640px;
-  text-align: left;
-  border: #def 2px solid;
-  margin: 20px auto 0;
-  border-radius: 10px;
-  background: rgba(155, 175, 195, 0.3); }
+#character section {
+  overflow: hidden;
+  display: inline-block;
+  height: 140px;
+  width: 300px;
+  margin: 5px; }
+  #character section .bg-image {
+    transition: 0.3s;
+    height: 90px;
+    width: 300px;
+    background-size: 300px 450px;
+    background-position: center center; }
+  #character section#moon .bg-image {
+    background-image: url(../img/bg1.png);
+    background-position: 0 0; }
+  #character section#moon .ch-body {
+    background: #324; }
+  #character section#gen .bg-image {
+    background-image: url(../img/bg1.png);
+    background-position: 0 -90px; }
+  #character section#gen .ch-body {
+    background: #999; }
+  #character section#alt .bg-image {
+    background-image: url(../img/bg1.png);
+    background-position: 0 -180px; }
+  #character section#alt .ch-body {
+    background: #397; }
+  #character section#mgt .bg-image {
+    background-image: url(../img/bg1.png);
+    background-position: 0 -270px; }
+  #character section#mgt .ch-body {
+    background: #222; }
+  #character section#drk .bg-image {
+    background-image: url(../img/bg1.png);
+    background-position: 0 -360px; }
+  #character section#drk .ch-body {
+    background: #444; }
+  #character section#ykz .bg-image {
+    background-image: url(../img/bg2.png);
+    background-position: 0 0; }
+  #character section#ykz .ch-body {
+    background: #963; }
+  #character section#kor .bg-image {
+    background-image: url(../img/bg2.png);
+    background-position: 0 -90px; }
+  #character section#kor .ch-body {
+    background: #149; }
+  #character section#bob .bg-image {
+    background-image: url(../img/bg2.png);
+    background-position: 0 -180px; }
+  #character section#bob .ch-body {
+    background: #421; }
+  #character section#alsn .bg-image {
+    background-image: url(../img/bg2.png);
+    background-position: 0 -270px; }
+  #character section#alsn .ch-body {
+    background: #579; }
+  #character section#moon2 .bg-image {
+    background-image: url(../img/bg2.png);
+    background-position: 0 -360px; }
+  #character section#moon2 .ch-body {
+    background: #282030; }
+  #character section#rn .bg-image {
+    background-image: url(../img/bg3.png);
+    background-position: 0 0; }
+  #character section#rn .ch-body {
+    background: #848; }
+  #character section#wst .bg-image {
+    background-image: url(../img/bg3.png);
+    background-position: 0 -90px; }
+  #character section#wst .ch-body {
+    background: #879; }
+  #character section#cle .bg-image {
+    background-image: url(../img/bg3.png);
+    background-position: 0 -180px; }
+  #character section#cle .ch-body {
+    background: #911; }
+  #character section#afn .bg-image {
+    background-image: url(../img/bg3.png);
+    background-position: 0 -270px; }
+  #character section#afn .ch-body {
+    background: #111; }
+  #character section#rpk .bg-image {
+    background-image: url(../img/bg3.png);
+    background-position: 0 -360px; }
+  #character section#rpk .ch-body {
+    background: #648; }
+  #character section .ch-body {
+    transition: 0.3s;
+    height: 50px;
+    position: relative; }
+    #character section .ch-body img {
+      transition: 0.3s;
+      position: absolute;
+      top: -43px;
+      left: 7px;
+      height: 80px;
+      width: 80px;
+      border: 3px solid white;
+      border-radius: 50%; }
+    #character section .ch-body h1 {
+      margin: 0;
+      height: 50px;
+      padding-left: 110px;
+      text-align: left;
+      line-height: 45px;
+      font-size: 20px; }
+    #character section .ch-body .spec {
+      transition: 0.2s;
+      position: absolute;
+      top: 20px;
+      left: 110px;
+      opacity: 0; }
+    #character section .ch-body.ln h1 {
+      padding-top: 3px;
+      font-size: 18px;
+      line-height: 22px; }
+    #character section .ch-body.ln .spec {
+      top: 30px; }
+    #character section .ch-body .detail {
+      padding: 0 10px;
+      text-align: left; }
+  #character section:hover .bg-image {
+    height: 30px;
+    opacity: 0.3; }
+  #character section:hover .ch-body {
+    height: 110px; }
+    #character section:hover .ch-body img {
+      top: -23px; }
+    #character section:hover .ch-body .spec {
+      opacity: 1; }
 
-div.account img {
-  height: 150px;
-  float: left;
-  margin: 10px 0; }
+div.account {
+  margin: 0 auto;
+  min-width: 300px;
+  max-width: 600px; }
+  div.account .account_frame {
+    text-align: center;
+    clear: both;
+    border: #def 2px solid;
+    margin: 20px 20px 0;
+    border-radius: 10px;
+    background: rgba(155, 175, 195, 0.3); }
+    div.account .account_frame img {
+      display: inline-block;
+      vertical-align: top;
+      width: 250px; }
+    div.account .account_frame .account_detail {
+      display: inline-block;
+      font-size: 18px;
+      text-align: left;
+      vertical-align: top;
+      width: 280px;
+      margin: 20px 10px; }
 
 header {
   position: fixed;
