@@ -142,7 +142,7 @@
         wins: 0,
         wind: 0,
         winn: 0,
-        share_base: "https://twitter.com/share?url=https%3A%2F%2Fkamitsuki-works.github.io%2Fpso2%2Fdice.html&related=kamitsuki_genya&hashtags=フォトンダイスシミュレータ&text="
+        share_base: "https://twitter.com/share?url=https%3A%2F%2Fkamitsuki-works.github.io%2Fpso2%2Fdice.html&related=kamitsuki_genya&hashtags=フォトンダイスシミュレータ%2CPSO2es&text="
       };
     };
     v = new Vue({
