@@ -1,27 +1,27 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <title>フォトンダイスシミュレータ - 上月ちゃん劇場出張所</title>
+  <title>フォトンダイスシミュレータ - 上月ちゃん劇場</title>
   <meta charset="utf-8" />
   <meta name="keywords" Content="pso2,上月ちゃん,上月弦夜,Moonlight" />
   <meta name="author" content="Genya Kamitsuki" />
   <meta name="copyright" content="Genya Kamitsuki" />
   <meta name="robots" content="noindex,nofollow" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="js/vue.js"></script>
+  <script src="js/vue.min.js"></script>
   <script src="js/dice.js"></script>
-  <link rel="shortcut icon" href="favicon.ico" />
   <link rel="stylesheet" href="css/pso2.css" />
 </head>
 <body>
 <header>
-  <div class="main">
-   <a class="logo"><img src="img/font.png" class="logo"></a>
-  </div>
+ <a class="index" href="./index.html"><img src="img/font.png"></a>
+ <a href="http://pso2.jp/supporters/?slink_keyword=%E4%B8%8A%E6%9C%88%E3%81%A1%E3%82%83%E3%82%93%E5%8A%87%E5%A0%B4" target="_pso2"><img src="img/btn3.png" class="btn"></a>
+ <a class="pointer" id="descbtn"><img src="img/btn5.png" class="btn"></a>
+ <div id="description" style="display:none;">
+  <article><h3>フォトンダイスシミュレータ説明書</h3><section>◆ダイスの確率は同様です。本家は知りません。<br/>◆期間限定の乱入はありません。<br/>◆vsモアはサイコロ1つで判定します。<br/>◆vsジェネはサイコロ2つで判定します。<br/><label><input id="clog" type="checkbox"/>勝負ログをコンソールに出力する。</label></section></article>
+ </div>
 </header>
-<div class="header_space"></div>
 <div class="main">
-
  <div class="card">
   <h3>Simulate Order</h3>
   <div class="input now">
@@ -76,10 +76,12 @@
       <tr><td>{{ winf }}</td><td>{{ wins }}</td><td>{{ wind }}</td><td>{{ winn }}</td></tr>
     </tbody>
   </table>
-
-
+  <a :href="share" target="_twitter"><img src="./img/btn1.png"></a>
  </div>
-
 </div>
+<footer>
+Copyright©2017 Genya Kamitsuki All Rights Reserved. <br/>
+©SEGA　PHANTASY STAR ONLINE 2
+</footer>
 </body>
 </html>

@@ -141,20 +141,33 @@
         winf: 0,
         wins: 0,
         wind: 0,
-        winn: 0
+        winn: 0,
+        share_base: "https://twitter.com/share?url=https%3A%2F%2Fkamitsuki-works.github.io%2Fpso2%2Fdice.html&related=kamitsuki_genya&hashtags=フォトンダイスシミュレータ&text="
       };
     };
     v = new Vue({
       el: '#result',
-      data: data
+      data: data,
+      computed: {
+        share: function() {
+          if (this.count === 0) {
+            return this.share_base;
+          } else {
+            return this.share_base + this.now + "LCに到達するまで" + Math.ceil(this.count / 3) + "日かかりました。";
+          }
+        }
+      }
     });
     simulating = false;
     $(document).on('change', '#refund', function() {
       $('#vs').prop('disabled', $(this).val() === "1" ? false : true);
       return $('#lc').prop('disabled', $(this).val() === "2" ? false : true);
     });
+    $(document).on('click', '#descbtn', function() {
+      return $('#description').slideToggle();
+    });
     return $(document).on('click', '.start', function() {
-      var blc, lc, mag, mvs, now, target, vs, vs_cnt;
+      var blc, lc, mag, mvs, now, output, target, vs, vs_cnt;
       $('.input').removeClass('err');
       now = new Number($('#now').val());
       target = new Number($('#target').val());
@@ -200,10 +213,14 @@
       v.winn = 0;
       vs_cnt = 0;
       lc = 0;
+      output = $('#clog').prop('checked');
       while (v.now < target && v.count < 9999) {
         vs = vsdata[vs_cnt];
         mag = check(dice(vs.dice), dice(3));
         if (mag === 0) {
+          if (output) {
+            console.log(vs.name + "に負けました。");
+          }
           lose(vs_cnt);
           lc = 0;
           vs_cnt = 0;
@@ -215,8 +232,14 @@
         } else {
           lc *= mag;
         }
+        if (output) {
+          console.log(vs.name + "に勝ちました。獲得LC:" + lc);
+        }
         if (v.now + lc >= target || lc >= blc || vs_cnt >= mvs) {
           v.now += lc;
+          if (output) {
+            console.log("獲得LCを清算します。現在LC：" + v.now + "(+" + lc + ")");
+          }
           vs_cnt = 0;
           v.count++;
           continue;
