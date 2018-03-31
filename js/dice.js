@@ -216,7 +216,16 @@
       output = $('#clog').prop('checked');
       while (v.now < target && v.count < 9999) {
         vs = vsdata[vs_cnt];
-        mag = check(dice(vs.dice), dice(3));
+        var dt = new Date();
+        var apd = []
+        if(dt.getMonth() === 3 && dt.getDate() === 1){
+          apd.push(6);
+          apd.push(6);
+          apd.push(6);
+        } else {
+          apd = dice(3);
+        }
+        mag = check(dice(vs.dice), apd);
         if (mag === 0) {
           if (output) {
             console.log(vs.name + "に負けました。");
