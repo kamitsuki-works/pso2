@@ -252,6 +252,31 @@ div.main {
     background-position: 0 -360px; }
   #character section#rpk .ch-body {
     background: #648; }
+  #character section#sst .bg-image {
+    background-image: url(../img/bg4.png);
+    background-position: 0 0px; }
+  #character section#sst .ch-body {
+    background: #986; }
+  #character section#tts .bg-image {
+    background-image: url(../img/bg4.png);
+    background-position: 0 -90px; }
+  #character section#tts .ch-body {
+    background: #248; }
+  #character section#gdk .bg-image {
+    background-image: url(../img/bg4.png);
+    background-position: 0 -180px; }
+  #character section#gdk .ch-body {
+    background: #136; }
+  #character section#van .bg-image {
+    background-image: url(../img/bg4.png);
+    background-position: 0 -270px; }
+  #character section#van .ch-body {
+    background: #942; }
+  #character section#alc .bg-image {
+    background-image: url(../img/bg4.png);
+    background-position: 0 -360px; }
+  #character section#alc .ch-body {
+    background: #939; }
   #character section .ch-body {
     transition: 0.3s;
     height: 50px;
